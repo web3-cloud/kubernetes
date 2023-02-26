@@ -50,7 +50,8 @@ Finally, the worker nodes need to participate in the blockchain consensus algori
 Overall, the use of blockchain consensus for standing up Kubernetes clusters provides increased security, fault tolerance, and scalability. By leveraging the immutability and decentralized nature of blockchain, the Kubernetes clusters become more resistant to attacks and tampering, and can be more easily distributed across multiple nodes, allowing for increased availability and fault tolerance.
 
 
-#bottlenecks
+# bottlenecks
+
 Network speed. I believe we can add a procedure part of the consensus algorithm to test network speed
 
 Tempering with Server OS. We can run an agent that reverts any changes and perform checksum on system files
