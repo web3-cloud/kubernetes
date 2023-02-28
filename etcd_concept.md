@@ -43,6 +43,13 @@ Once the new node is added to the cluster, it can participate in the Raft consen
 
 Overall, this approach would allow any participant to spin up a new etcd node and join the cluster in a fully decentralized way, while still ensuring that only nodes that have performed a valid amount of computational work are allowed to participate.
 
+## Implementation approach 4
+
+We can have bitcoin network to verify the nodes that wants to participate and elect the first, second, third nodes
+It is technically possible to use the Bitcoin network to verify nodes that want to participate in an etcd cluster. One way to do this would be to have nodes provide proof of their Bitcoin transactions to demonstrate that they have a certain amount of Bitcoin in their possession. This would serve as a form of proof-of-stake, where nodes with more Bitcoin would be more trusted in the network.
+
+Once the first node is elected through this process, it can use its authority to establish a new etcd cluster and allow other nodes to join through a similar verification process. However, it's important to note that this approach would require significant coordination and development effort to integrate the Bitcoin network with etcd, and it may not be the most practical or efficient solution for every use case. Additionally, relying solely on a single external network like Bitcoin for node verification could introduce additional security risks and complexities.
+
 ## Possibility with Bitcoin:
 
 Implement a proof-of-work algorithm in your etcd node to generate a PoW. There are several existing PoW algorithms that you could use or modify, such as SHA256 or Scrypt. You will need to modify the etcd source code to include the PoW algorithm and generate a proof of work for each node.
@@ -54,3 +61,6 @@ Submit the transaction to the Bitcoin network for validation and inclusion in a 
 Configure your etcd nodes to use the Raft consensus algorithm for cluster join. You will need to modify the etcd configuration file to enable Raft and specify the addresses of the other nodes in the cluster.
 
 Run the etcd nodes and verify that they are able to communicate with each other using Raft.
+
+
+
