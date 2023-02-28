@@ -29,6 +29,20 @@ To ensure the authenticity of the public key, it can be signed by other nodes in
 
 This approach allows any participant to spin up an etcd node and join the cluster in a fully decentralized way, while ensuring that the nodes are committed to the network and that their identities are authenticated and verified.
 
+
+## Proposal:
+When a new node wants to join the cluster, it first needs to generate a valid cryptographic proof of work. The proof of work algorithm can be designed in such a way that it requires the node to perform a certain amount of computational work before a valid proof can be generated. This work can take the form of solving a complex cryptographic puzzle or executing some other type of CPU-intensive task.
+
+Once the node generates a valid proof of work, it can then use this proof to request to join the Raft cluster. The proof of work can be included in the join request message, along with other relevant information about the node, such as its IP address, public key, etc.
+
+Upon receiving a join request message, the Raft leader node can validate the proof of work included in the message to ensure that the requesting node has indeed performed the required amount of computational work. If the proof of work is valid, the leader node can then generate a new public/private key pair for the requesting node and assign it to the node.
+
+The leader node can then add the new node to the Raft cluster by sending out a series of join messages to the existing cluster nodes. These messages can include the new node's IP address, public key, and other relevant information.
+
+Once the new node is added to the cluster, it can participate in the Raft consensus process by exchanging heartbeat messages with the other nodes and casting votes on proposed changes to the cluster's state.
+
+Overall, this approach would allow any participant to spin up a new etcd node and join the cluster in a fully decentralized way, while still ensuring that only nodes that have performed a valid amount of computational work are allowed to participate.
+
 ## Possibility with Bitcoin:
 
 Implement a proof-of-work algorithm in your etcd node to generate a PoW. There are several existing PoW algorithms that you could use or modify, such as SHA256 or Scrypt. You will need to modify the etcd source code to include the PoW algorithm and generate a proof of work for each node.
