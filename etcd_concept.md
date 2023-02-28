@@ -30,7 +30,7 @@ To ensure the authenticity of the public key, it can be signed by other nodes in
 This approach allows any participant to spin up an etcd node and join the cluster in a fully decentralized way, while ensuring that the nodes are committed to the network and that their identities are authenticated and verified.
 
 
-## Proposal:
+## Proposal 1:
 When a new node wants to join the cluster, it first needs to generate a valid cryptographic proof of work. The proof of work algorithm can be designed in such a way that it requires the node to perform a certain amount of computational work before a valid proof can be generated. This work can take the form of solving a complex cryptographic puzzle or executing some other type of CPU-intensive task.
 
 Once the node generates a valid proof of work, it can then use this proof to request to join the Raft cluster. The proof of work can be included in the join request message, along with other relevant information about the node, such as its IP address, public key, etc.
@@ -43,12 +43,12 @@ Once the new node is added to the cluster, it can participate in the Raft consen
 
 Overall, this approach would allow any participant to spin up a new etcd node and join the cluster in a fully decentralized way, while still ensuring that only nodes that have performed a valid amount of computational work are allowed to participate.
 
-## Implementation approach 4
+## Proposal 2:
 
 We can have bitcoin network to verify the nodes that wants to participate and elect the first, second, third nodes
 It is technically possible to use the Bitcoin network to verify nodes that want to participate in an etcd cluster. One way to do this would be to have nodes provide proof of their Bitcoin transactions to demonstrate that they have a certain amount of Bitcoin in their possession. This would serve as a form of proof-of-stake, where nodes with more Bitcoin would be more trusted in the network.
 
-Once the first node is elected through this process, it can use its authority to establish a new etcd cluster and allow other nodes to join through a similar verification process. However, it's important to note that this approach would require significant coordination and development effort to integrate the Bitcoin network with etcd, and it may not be the most practical or efficient solution for every use case. Additionally, relying solely on a single external network like Bitcoin for node verification could introduce additional security risks and complexities.
+once the first node is elected and the other nodes have verified its authenticity through the Bitcoin network, they can enter into Raft consensus and form a cluster with the first node. From there, they can use Raft to maintain a distributed and consistent state.
 
 ## Possibility with Bitcoin:
 
