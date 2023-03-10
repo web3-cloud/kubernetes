@@ -1,6 +1,11 @@
 ## kubernetes
 kubernetes on blockchain
 
+## Read Important proposals
+
+![Etcd proposal](etcd_concept.md)
+![White Paper](white_paper.md)
+
 # kubernetes Architecture
 ![kubernetes](kubernetes.jpg)
 
